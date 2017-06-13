@@ -8,3 +8,5 @@ e.g.
 > python inject_error.py ../data/sample.train.E00 15 > ../data/sample.train.E15
 > python inject_error.py ../data/sample.train.E00 20 > ../data/sample.train.E20
 
+N.B.
+- Chunking information should be added in the third column in advance. (e.g., CRFsuite)

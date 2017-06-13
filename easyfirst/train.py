@@ -24,7 +24,6 @@ import isprojective
 from explore_policies import ExplorePolicy
 
 from optparse import OptionParser
-
 from easyfirst import train,Model
 
 usage="""usage: %prog -o model -f features [options] train_file gold_file [dev_file] """ 
