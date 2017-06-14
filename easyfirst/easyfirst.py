@@ -1407,7 +1407,7 @@ class Model: #{{{
       return self.fext
 #}}}
 
-def train(attachonly, sents, gold_sents, model, dev=None,ITERS=20,save_every=None,explore_policy=None,shuffle_sents=True):
+def train(attachonly, sents, gold_sents, model, dev=None, ITERS=20, save_every=None, explore_policy=None, shuffle_sents=True):
 
    fext = model.featureExtractor()
    oracle=CostOracle()
@@ -1483,63 +1483,63 @@ def label_sets_from_sents(sents):
 #            print "\nscore: %s" % (test(dev,model,ITER,quiet=True,labeled=True),)
 #   parser.scorer.dump_fin(file(model.weightsFile("FINAL"),"w"),sparse=True)
 
-#def test(attachonly, sents,model,iter="FINAL",quiet=False,ignore_punc=False,labeled=True):
-#   fext = model.featureExtractor()
-#   import time
-#   good = 0.0
-#   bad  = 0.0
-#   complete = 0.0
-#   if labeled:
-#      from ml.sml import SparseMulticlassModel
-#      m=SparseMulticlassModel(file(model.weightsFile(iter)))
-#   else:
-#      m=MulticlassModel(model.weightsFile(iter))
-#   start = time.time()
-#   parser=Parser(attachonly, m,fext,Oracle())
-#   if labeled:
-#      parser.id_to_action_mapper = pickle.load(file(model.weightsFile("amap")))
-#   scores=[]
-#
-#   for sent in sents:
-#      sent_good=0.0
-#      sent_bad =0.0
-#      no_mistakes=True
-#      if not quiet:
-#         print "@@@",good/(good+bad+1)
-#      if labeled:
-#         deps=parser.parse_labeled(sent)
-#      else:
-#         deps, sent_new = parser.parse(sent)
-#      #print sent
-#      #print sent_new
-#      sent = deps.annotate(sent_new)
-#
-#
-#      for tok in sent:
-#         if not quiet:
-#            if labeled:
-#               print tok['id'], tok['form'], "_",tok['tag'],tok['tag'],"_",tok['pparent'],tok['pprel'],"_ _"
-#            else:
-#               print tok['id'], tok['form'], "_",tok['tag'],tok['tag'],"_",tok['pparent'],"_ _ _"
-#         if ignore_punc and tok['form'][0] in "'`,.-;:!?{}": continue
-#         if tok['parent']==tok['pparent']:
-#            good+=1
-#            sent_good+=1
-#         else:
-#            bad+=1
-#            sent_bad+=1
-#            no_mistakes=False
-#      if not quiet: print
-#      if no_mistakes: complete+=1
-#      scores.append((sent_good/(sent_good+sent_bad)))
-#
-#   if not quiet:
-#      print "time(seconds):",time.time()-start
-#      print "num sents:",len(sents)
-#      print "complete:",complete/len(sents)
-#      print "macro:",sum(scores)/len(scores)
-#      print "micro:",good/(good+bad)
-#   return good/(good+bad), complete/len(sents)
+def test(attachonly, sents,model,iter="FINAL",quiet=False,ignore_punc=False,labeled=True):
+   fext = model.featureExtractor()
+   import time
+   good = 0.0
+   bad  = 0.0
+   complete = 0.0
+   if labeled:
+      from ml.sml import SparseMulticlassModel
+      m=SparseMulticlassModel(file(model.weightsFile(iter)))
+   else:
+      m=MulticlassModel(model.weightsFile(iter))
+   start = time.time()
+   parser=Parser(attachonly, m,fext,Oracle())
+   if labeled:
+      parser.id_to_action_mapper = pickle.load(file(model.weightsFile("amap")))
+   scores=[]
+
+   for sent in sents:
+      sent_good=0.0
+      sent_bad =0.0
+      no_mistakes=True
+      if not quiet:
+         print "@@@",good/(good+bad+1)
+      if labeled:
+         deps=parser.parse_labeled(sent)
+      else:
+         deps, sent_new = parser.parse(sent)
+      #print sent
+      #print sent_new
+      sent = deps.annotate(sent_new)
+
+
+      for tok in sent:
+         if not quiet:
+            if labeled:
+               print tok['id'], tok['form'], "_",tok['tag'],tok['tag'],"_",tok['pparent'],tok['pprel'],"_ _"
+            else:
+               print tok['id'], tok['form'], "_",tok['tag'],tok['tag'],"_",tok['pparent'],"_ _ _"
+         if ignore_punc and tok['form'][0] in "'`,.-;:!?{}": continue
+         if tok['parent']==tok['pparent']:
+            good+=1
+            sent_good+=1
+         else:
+            bad+=1
+            sent_bad+=1
+            no_mistakes=False
+      if not quiet: print
+      if no_mistakes: complete+=1
+      scores.append((sent_good/(sent_good+sent_bad)))
+
+   if not quiet:
+      print "time(seconds):",time.time()-start
+      print "num sents:",len(sents)
+      print "complete:",complete/len(sents)
+      print "macro:",sum(scores)/len(scores)
+      print "micro:",good/(good+bad)
+   return good/(good+bad), complete/len(sents)
 
 def parse(attachonly, sents,model,iter="FINAL"):
    fext = model.featureExtractor()
