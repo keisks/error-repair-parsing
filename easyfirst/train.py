@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-## Copyright Keisuke Sakaguchi (2017)
-## Originally under GPL by Yoav Goldberg (2013)
+## Copyright 2017 Keisuke Sakaguchi
+## Copyright 2013 Yoav Goldberg
 ##
 ##    This is free software: you can redistribute it and/or modify
 ##    it under the terms of the GNU General Public License as published by
