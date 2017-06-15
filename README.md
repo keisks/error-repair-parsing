@@ -12,7 +12,10 @@ N.B. For license restriction, we don't provide the original PTB in this reposito
 
 1. Download Penn Treebank under data directory.
 2. Convert PTB into CoNLL format (e.g., [Penn2Malt](https://stp.lingfil.uu.se/~nivre/research/Penn2Malt.html))
-3. Add noise by running errgent. See the readme file in the directory.
+3. Put the CoNLL format file as ./data/[train|dev|test].E00  (i.e., Error rate = 0%)
+
+4. Add noise by running errgent. See the readme file in the directory.
+        sh ./generate_train_dev_test.sh (for generating all the files needed)
 
 The file should look like the following. We assume that we have named the files as ./data/[train|dev|test].[E00|E05|E10|E15|E20].
 
@@ -37,16 +40,27 @@ The file should look like the following. We assume that we have named the files 
         
         ...
 
-4. run training
-see shell script (sample_train.sh)
+4. training a model
 
-5. use the model to parse
-see sample_parsh.sh
+        e.g., sh sample_train.sh E05 (training a model with 5% error-injected corpus)
 
+5. parsing sentences with the trained model 
+
+        e.g., sh sample_parse.sh dev E05 E10 (parse 10% error-injected dev set with a model trained on 5% error corpus)
 
 6. evaluation on parsing performance 
 
 [srleval](https://code.google.com/archive/p/srleval/source/default/source)
+
+        cd ./eval/srleval/trunk/align
+        make
+
+        modify line 231 in ./eval/srleval/trunk/eval.py
+        (from) for item in alignment.align(ref_words, hyp_words, command=os.path.dirname(__file__) + "/align/align"):
+        (to)   for item in alignment.align(ref_words, hyp_words):
+
+        run evaluation script
+        e.g., sh evaluate.sh dev E05 E10 (evaluate 10% error-injected dev set with a model trained on 5% error corpus)
 
 7. evaluation on grammaticality improvement
 
