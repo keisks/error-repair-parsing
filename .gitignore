@@ -1,0 +1,6 @@
+syntax: glob
+*.pyc
+*~
+*models/*.tgz
+*ml/build/*
+!*.gitkeep
