@@ -2,7 +2,7 @@
 
 Last updated: June, 2017
 
-[link to the paper](#)
+[link to the paper (coming soon)](#)
 
 - - -
 
@@ -13,12 +13,13 @@ N.B. For license restriction, we don't provide the original PTB in this reposito
 1. Download Penn Treebank under data directory.
 2. Convert PTB into CoNLL format (e.g., [Penn2Malt](https://stp.lingfil.uu.se/~nivre/research/Penn2Malt.html))
 3. Put the CoNLL format file as ./data/[train|dev|test].E00  (i.e., Error rate = 0%)
-
 4. Add noise by running errgent. See the readme file in the directory.
+
         sh ./generate_train_dev_test.sh (for generating all the files needed)
-
-The file should look like the following. We assume that we have named the files as ./data/[train|dev|test].[E00|E05|E10|E15|E20].
-
+        
+        We assume that we have named the files as ./data/[train|dev|test].[E00|E05|E10|E15|E20].
+        The file should look like the following. 
+        
         1       Ms.     B-NP    NNP     _       _       2       TITLE   _       _
         2       Haag    I-NP    NNP     _       _       3       SBJ     _       _
         3       plays   B-VP    VBZ     _       _       0       ROOT    _       _
@@ -50,15 +51,15 @@ The file should look like the following. We assume that we have named the files 
 
 6. evaluation on parsing performance 
 
-[srleval](https://code.google.com/archive/p/srleval/source/default/source)
-
+        Download [srleval](https://code.google.com/archive/p/srleval/source/default/source)
+        
         cd ./eval/srleval/trunk/align
         make
-
+        
         modify line 231 in ./eval/srleval/trunk/eval.py
         (from) for item in alignment.align(ref_words, hyp_words, command=os.path.dirname(__file__) + "/align/align"):
         (to)   for item in alignment.align(ref_words, hyp_words):
-
+        
         run evaluation script
         e.g., sh evaluate.sh dev E05 E10 (evaluate 10% error-injected dev set with a model trained on 5% error corpus)
 
@@ -66,11 +67,10 @@ The file should look like the following. We assume that we have named the files 
 
 [Predicting Grammaticality on an Ordinal Scale](https://github.com/cnap/grammaticality-metrics/tree/master/heilman-et-al)
 
-### run 
-
 
 ## Reference
-Under construction
+
+ - coming soon
 
 ## Questions
 
