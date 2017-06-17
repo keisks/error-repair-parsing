@@ -43,16 +43,17 @@ N.B. For license restriction, we don't provide the original PTB in this reposito
 
 4. training a model
 
-        e.g., sh sample_train.sh E05 (training a model with 5% error-injected corpus)
+        (e.g.,) sh sample_train.sh E05 (training a model with 5% error-injected corpus)
 
 5. parsing sentences with the trained model 
 
-        e.g., sh sample_parse.sh dev E05 E10 (parse 10% error-injected dev set with a model trained on 5% error corpus)
+        (e.g.,) sh sample_parse.sh dev E05 E10 (parse 10% error-injected dev set with a model trained on 5% error corpus)
 
 6. evaluation on parsing performance 
 
-        Download [srleval](https://code.google.com/archive/p/srleval/source/default/source)
-        
+        cd ./eval
+        wget https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/srleval/source-archive.zip -O srleval.zip
+        unzip srleval.zip
         cd ./eval/srleval/trunk/align
         make
         
@@ -61,11 +62,12 @@ N.B. For license restriction, we don't provide the original PTB in this reposito
         (to)   for item in alignment.align(ref_words, hyp_words):
         
         run evaluation script
-        e.g., sh evaluate.sh dev E05 E10 (evaluate 10% error-injected dev set with a model trained on 5% error corpus)
+        cd  ./eval
+        (e.g.,) sh evaluate.sh dev E05 E10 (evaluate 10% error-injected dev set with a model trained on 5% error corpus)
 
 7. evaluation on grammaticality improvement
 
-[Predicting Grammaticality on an Ordinal Scale](https://github.com/cnap/grammaticality-metrics/tree/master/heilman-et-al)
+  - See [Predicting Grammaticality on an Ordinal Scale](https://github.com/cnap/grammaticality-metrics/tree/master/heilman-et-al)
 
 
 ## Reference
