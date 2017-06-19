@@ -18,8 +18,8 @@ Last updated: June, 2017
         cd ./errgent
         sh ./generate_train_dev_test.sh (for generating all the files needed)
         
-  We assume that we have named the files as ./data/[train|dev|test].[E00|E05|E10|E15|E20].
-  The file should look like the following. 
+    We assume that we have named the files as ./data/[train|dev|test].[E00|E05|E10|E15|E20].
+    The file should look like the following. 
 
             1       Ms.     B-NP    NNP     _       _       2       TITLE   _       _
             2       Haag    I-NP    NNP     _       _       3       SBJ     _       _
@@ -50,7 +50,7 @@ Last updated: June, 2017
 
         (e.g.,) sh sample_parse.sh dev E05 E10 (parse 10% error-injected dev set with a model trained on 5% error corpus)
 
-6. evaluation on parsing performance 
+6. Evaluation on parsing performance 
 
         cd ./eval
         wget https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/srleval/source-archive.zip -O srleval.zip
@@ -66,7 +66,7 @@ Last updated: June, 2017
         cd  ./eval
         (e.g.,) sh evaluate.sh dev E05 E10 (evaluate 10% error-injected dev set with a model trained on 5% error corpus)
 
-7. evaluation on grammaticality improvement
+7. Evaluation on grammaticality improvement
 
   - See [Predicting Grammaticality on an Ordinal Scale](https://github.com/cnap/grammaticality-metrics/tree/master/heilman-et-al)
 
