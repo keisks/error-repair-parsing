@@ -71,7 +71,7 @@ Last updated: June, 2017
   - See [Predicting Grammaticality on an Ordinal Scale](https://github.com/cnap/grammaticality-metrics/tree/master/heilman-et-al)
 
 
-## Reference
+## bibtex
 
  - Coming soon
 
