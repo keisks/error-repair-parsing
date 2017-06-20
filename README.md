@@ -2,7 +2,8 @@
 
 Last updated: June, 2017
 
-[link to the paper (coming soon)](#)
+[paper](http://cs.jhu.edu/~keisuke/paper/2017_error-repair.pdf)  [bibtex](http://cs.jhu.edu/~keisuke/paper/2017_error-repair.bib) 
+
 
 - - -
 
@@ -70,10 +71,6 @@ Last updated: June, 2017
 
   - See [Predicting Grammaticality on an Ordinal Scale](https://github.com/cnap/grammaticality-metrics/tree/master/heilman-et-al)
 
-
-## bibtex
-
- - Coming soon
 
 ## Questions
 

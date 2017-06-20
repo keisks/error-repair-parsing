@@ -34,12 +34,9 @@ from pattern.en import singularize, pluralize, lemma, conjugate
 import kenlm
 
 ### specify your kenlm model
-#lmmodel = kenlm.Model("path_to_kenlm_model")
-lmmodel = kenlm.Model("/export/a11/keisuke/joint-gec-parse/kenlm/lmfiles/gigaword.kenlm.v5")
-
+lmmodel = kenlm.Model("path_to_kenlm_model")
 
 TARGET_PREP = ["on", "about", "from", "for", "of", "to", "at", "in", "with", "by"]
-#TARGET_PREP = ["on", "about", "into", "with"]
 TARGET_VFORM = ["VB", "VBP", "VBZ", "VBG", "VBD", "VBN"]
 TENSE_ASPECTS = ['inf', '1sg', '3sg', 'part', 'p', 'ppart']
 PREV_PREP_TAGS = ["NN", "NNS", "DT", "CD", "JJ", "JJR", "JJS", "NNP", "NNPS"]
