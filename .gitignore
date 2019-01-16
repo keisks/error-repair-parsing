@@ -4,3 +4,5 @@ syntax: glob
 *models/*.tgz
 *ml/build/*
 !*.gitkeep
+./data/*.E00
+./data/treebank_3
