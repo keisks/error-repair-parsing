@@ -1,6 +1,6 @@
 # Error-repair Dependency Pasring for Ungrammatical Texts (ACL 2017)
 
-Last updated: June, 2017
+Last updated: January 15th, 2019
 
 [paper](http://cs.jhu.edu/~keisuke/paper/2017_error-repair.pdf)  [bibtex](http://cs.jhu.edu/~keisuke/paper/2017_error-repair.bib) 
 
@@ -11,9 +11,19 @@ Last updated: June, 2017
 
 - N.B. For license restriction, we don't provide the original PTB in this repository.
 
-1. Download Penn Treebank under data directory.
-2. Convert PTB into CoNLL format (e.g., [Penn2Malt](https://stp.lingfil.uu.se/~nivre/research/Penn2Malt.html))
-3. Put the CoNLL format file as ./data/[train|dev|test].E00  (i.e., Error rate = 0%)
+1. Get Penn Treebank under data directory. 
+
+        cd data
+        e.g., ln -s PATH_TO_YOUR_PTB treebank_3
+
+2. Download and Install [CRFsuite](http://www.chokkan.org/software/crfsuite/manual.html#idp8849147120) for preprocessing.
+
+3. Set `CRFSUITE` path in `preproc.sh` and run the script.
+
+        sh ./preproc.sh
+        
+   This creates `./data/[train|dev|test].E00` (i.e., Error rate = 0%)
+
 4. Add noise by running errgent. See the readme file in the directory.
 
         cd ./errgent
@@ -43,15 +53,24 @@ Last updated: June, 2017
             
             ...
 
-4. Training a model
+5. Set path for KenLM in [easyfirst.py](https://github.com/keisks/error-repair-parsing/blob/master/easyfirst/easyfirst.py#L37) 
+  
+   You can download pretraind LM by 
+   
+        wget http://cs.jhu.edu/~keisuke/shared/gigaword.kenlm
+        
+   If you want to train and use your own LM, please check `https://github.com/kpu/kenlm`.
+
+
+6. Training a error-repair parser
 
         (e.g.,) sh sample_train.sh E05 (training a model with 5% error-injected corpus)
 
-5. Parsing sentences with the trained model 
+7. Parsing sentences with the trained model 
 
         (e.g.,) sh sample_parse.sh dev E05 E10 (parse 10% error-injected dev set with a model trained on 5% error corpus)
 
-6. Evaluation on parsing performance 
+8. Evaluation on parsing performance 
 
         cd ./eval
         wget https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/srleval/source-archive.zip -O srleval.zip
