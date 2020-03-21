@@ -47,7 +47,7 @@ def read_words_from_raw_file(filename, tokenizer=lambda line:line.strip().split(
       for item in tokenizer(line): 
          yield item
 
-from future import *  # this will get me Counter (python 2.7) and namedtuple (python 2.6)
+from future_local import *  # this will get me Counter (python 2.7) and namedtuple (python 2.6)
 
 def Grouper(seq, key=lambda x:x,val=lambda x:x):
    d = defaultdict(Counter)

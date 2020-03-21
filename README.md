@@ -1,9 +1,6 @@
 # Error-repair Dependency Pasring for Ungrammatical Texts (ACL 2017)
 
-Last updated: January 15th, 2019
-
 [paper](http://cs.jhu.edu/~keisuke/paper/2017_error-repair.pdf)  [bibtex](http://cs.jhu.edu/~keisuke/paper/2017_error-repair.bib) 
-
 
 - - -
 
@@ -11,14 +8,54 @@ Last updated: January 15th, 2019
 
 - N.B. For license restriction, we don't provide the original PTB in this repository.
 
+0. Prerequisites 
+
+   The code depends on Python 2.7 (compiled with unicode=ucs2). 
+
+   Check if your python is compatible with the code.
+
+        $ python --version
+        Python 2.7.17
+        $ python -c "import sys; print(sys.maxunicode)"
+        65535 (If this is 1114111, then your python uses unicode=ucs4)
+
+   If your python is not compatible, you might want to build python from source.
+
+        (for example)
+        cd $HOME
+        mkdir local
+        mkdir temp
+        cd ./temp
+        wget https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tgz
+        tar zxvf Python-2.7.17.tgz
+        cd Python-2.7.17
+        ./configure --prefix=$HOME/local --enable-unicode=ucs2 --enable-loadable-sqlite-extensions
+        make && make install
+        export PATH=$HOME/local/bin:$PATH
+        cd $HOME/temp
+        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+        python get-pip.py
+
+   Once you have a compatible python, install pre-requisite modules.
+
+        pip install -r requirements.txt
+        (You need to install `libmysqlclient-dev` and `libsqlite3-dev` (e.g., `sudo apt-get install libmysqlclient-dev libsqlite3-dev`)
+
 1. Get Penn Treebank under data directory. 
 
-        cd data
-        e.g., ln -s PATH_TO_YOUR_PTB treebank_3
+        cd ./data
+        ln -s PATH_TO_YOUR_PTB treebank_3
 
 2. Download and Install [CRFsuite](http://www.chokkan.org/software/crfsuite/manual.html#idp8849147120) for preprocessing.
 
-3. Set `CRFSUITE` path in `preproc.sh` and run the script.
+        [example for linux]
+        cd ./data
+        wget https://github.com/downloads/chokkan/crfsuite/crfsuite-0.12-x86_64.tar.gz
+        wget https://github.com/downloads/chokkan/crfsuite/crfsuite-0.12.tar.gz
+        tar zxvf crfsuite-0.12-x86_64.tar.gz
+        tar zxvf crfsuite-0.12-.tar.gz
+
+3. Set `CRFSUITE_UTIL` and `crfsuite` paths in `preproc.sh` and run the script.
 
         sh ./preproc.sh
         
@@ -28,6 +65,7 @@ Last updated: January 15th, 2019
 
         cd ./errgent
         sh ./generate_train_dev_test.sh (for generating all the files needed)
+        
         
     We assume that we have named the files as ./data/[train|dev|test].[E00|E05|E10|E15|E20].
     The file should look like the following. 
@@ -61,9 +99,9 @@ Last updated: January 15th, 2019
         
    If you want to train and use your own LM, please check `https://github.com/kpu/kenlm`.
 
-
 6. Training a error-repair parser
 
+        cd easyfirst
         (e.g.,) sh sample_train.sh E05 (training a model with 5% error-injected corpus)
 
 7. Parsing sentences with the trained model 
