@@ -44,7 +44,7 @@
      
      (You need to install `libmysqlclient-dev` and `libsqlite3-dev` (e.g., `sudo apt-get install libmysqlclient-dev libsqlite3-dev`)
 
-1. Get Penn Treebank under data directory. (If you only need to use a parser with pre-trained models, go to step 7.)
+1. Get Penn Treebank under data directory. (If you only need to use a parser with pre-trained models, go to step 6.)
 
         cd ./data
         ln -s PATH_TO_YOUR_PTB treebank_3
@@ -94,24 +94,16 @@
             
             ...
 
-5. Set path for KenLM in [easyfirst.py](https://github.com/keisks/error-repair-parsing/blob/master/easyfirst/easyfirst.py#L37) 
-  
-   You can download pretraind LM by 
-   
-        wget http://cs.jhu.edu/~keisuke/shared/gigaword.kenlm
-        
-   If you want to train and use your own LM, please check `https://github.com/kpu/kenlm`.
-
-6. Training a error-repair parser
+5. Training a error-repair parser
 
         cd easyfirst
         (e.g.,) sh sample_train.sh E05 (training a model with 5% error-injected corpus)
 
-7. Parsing sentences with the trained model 
+6. Parsing sentences with the trained model 
 
         (e.g.,) sh sample_parse.sh dev E05 E10 (parse 10% error-injected dev set with a model trained on 5% error corpus)
 
-8. Evaluation on parsing performance 
+7. Evaluation on parsing performance 
 
         cd ./eval
         wget https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/srleval/source-archive.zip -O srleval.zip
@@ -127,7 +119,7 @@
         cd  ./eval
         (e.g.,) sh evaluate.sh dev E05 E10 (evaluate 10% error-injected dev set with a model trained on 5% error corpus)
 
-7. Evaluation on grammaticality improvement
+8. Evaluation on grammaticality improvement
 
   - See [Predicting Grammaticality on an Ordinal Scale](https://github.com/cnap/grammaticality-metrics/tree/master/heilman-et-al)
 

@@ -35,7 +35,8 @@ from pattern.en import singularize, pluralize, lemma, conjugate
 import kenlm
 
 ### specify your kenlm model
-lmmodel = kenlm.Model("path_to_kenlm_model")
+#lmmodel = kenlm.Model("path_to_kenlm_model")
+lmmodel = kenlm.Model("../data/gigaword.kenlm")
 
 TARGET_PREP = ["on", "about", "from", "for", "of", "to", "at", "in", "with", "by"]
 TARGET_VFORM = ["VB", "VBP", "VBZ", "VBG", "VBD", "VBN"]
