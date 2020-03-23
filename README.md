@@ -16,32 +16,33 @@
 
    - Check if your python is compatible with the code.
 
-        $ python --version
-        Python 2.7.17
-        $ python -c "import sys; print(sys.maxunicode)"
-        65535 (If this is 1114111, then your python uses unicode=ucs4)
+         $ python --version
+         Python 2.7.17
+         $ python -c "import sys; print(sys.maxunicode)"
+         65535 (If this is 1114111, then your python uses unicode=ucs4)
 
    - If your python is not compatible, you might want to build python from source.
 
-        (for example)
-        cd $HOME
-        mkdir local
-        mkdir temp
-        cd ./temp
-        wget https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tgz
-        tar zxvf Python-2.7.17.tgz
-        cd Python-2.7.17
-        ./configure --prefix=$HOME/local --enable-unicode=ucs2 --enable-loadable-sqlite-extensions
-        make && make install
-        export PATH=$HOME/local/bin:$PATH
-        cd $HOME/temp
-        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-        python get-pip.py
+         (for example)
+         cd $HOME
+         mkdir local
+         mkdir temp
+         cd ./temp
+         wget https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tgz
+         tar zxvf Python-2.7.17.tgz
+         cd Python-2.7.17
+         ./configure --prefix=$HOME/local --enable-unicode=ucs2 --enable-loadable-sqlite-extensions
+         make && make install
+         export PATH=$HOME/local/bin:$PATH
+         cd $HOME/temp
+         curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+         python get-pip.py
 
    - Once you have a compatible python, install pre-requisite modules.
 
-        pip install -r requirements.txt
-        (You need to install `libmysqlclient-dev` and `libsqlite3-dev` (e.g., `sudo apt-get install libmysqlclient-dev libsqlite3-dev`)
+         pip install -r requirements.txt
+     
+     (You need to install `libmysqlclient-dev` and `libsqlite3-dev` (e.g., `sudo apt-get install libmysqlclient-dev libsqlite3-dev`)
 
 1. Get Penn Treebank under data directory. 
 
