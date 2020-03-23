@@ -42,13 +42,10 @@ parser.add_option("--seed",dest="random_seed",action="store",type="int",default=
 
 opts, args = parser.parse_args()
 
-if len(args)<1 or not (opts.model_file or opts.features_file or opts.train_file or opts.gold_file):
+if not (opts.model_file or opts.features_file or opts.train_file or opts.gold_file):
    parser.print_usage()
    sys.exit(1)
 
-#TRAIN_FILE = args[0]
-#GOLD_FILE  = args[1]
-#DEV_FILE   = args[2] if len(args)>2 else None
 TRAIN_FILE = opts.train_file
 GOLD_FILE  = opts.gold_file
 DEV_FILE   = opts.dev_file
@@ -62,7 +59,6 @@ if TRAIN_FILE[-3:] == "E00":
 
 model = Model(FEATURES, "%s.weights" % MODEL)
 model.save("%s.model" % MODEL)
-
 
 dev = [s for s in io.conll_to_sents(file(DEV_FILE))] if DEV_FILE else []
 
