@@ -10,16 +10,18 @@
 
 0. Prerequisites 
 
-   The code depends on Python 2.7 (compiled with unicode=ucs2). 
+   - This repository uses [git-lfs](https://git-lfs.github.com/).
 
-   Check if your python is compatible with the code.
+   - The code depends on Python 2.7 (compiled with unicode=ucs2). 
+
+   - Check if your python is compatible with the code.
 
         $ python --version
         Python 2.7.17
         $ python -c "import sys; print(sys.maxunicode)"
         65535 (If this is 1114111, then your python uses unicode=ucs4)
 
-   If your python is not compatible, you might want to build python from source.
+   - If your python is not compatible, you might want to build python from source.
 
         (for example)
         cd $HOME
@@ -36,7 +38,7 @@
         curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
         python get-pip.py
 
-   Once you have a compatible python, install pre-requisite modules.
+   - Once you have a compatible python, install pre-requisite modules.
 
         pip install -r requirements.txt
         (You need to install `libmysqlclient-dev` and `libsqlite3-dev` (e.g., `sudo apt-get install libmysqlclient-dev libsqlite3-dev`)

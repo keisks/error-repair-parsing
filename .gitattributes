@@ -1,0 +1,1 @@
+easyfirst/models/*.FINAL filter=lfs diff=lfs merge=lfs -text
