@@ -10,8 +10,6 @@
 
 0. Prerequisites 
 
-   - This repository uses [git-lfs](https://git-lfs.github.com/).
-
    - The code depends on Python 2.7 (compiled with unicode=ucs2). 
 
    - Check if your python is compatible with the code.
@@ -44,7 +42,25 @@
      
      (You need to install `libmysqlclient-dev` and `libsqlite3-dev` (e.g., `sudo apt-get install libmysqlclient-dev libsqlite3-dev`)
 
-1. Get Penn Treebank under data directory. (If you only need to use a parser with pre-trained models, go to step 6.)
+   - Download kenlm model to `./data` 
+   
+         cd ./data
+         wget http://cs.jhu.edu/~keisuke/shared/gigaword.kenlm         
+         
+   - If you use a parser with pre-trained models, [download the model weights](https://drive.google.com/file/d/1LbScsAMBApRTu7C6R7jefbYPiGLolvl9/view?usp=sharing) and put them at `./easyfirst/models/` so that it will look like as follows:
+   
+         easyfirst/models/
+         ├── E05.model
+         ├── E05.weights.FINAL
+         ├── E10.model
+         ├── E10.weights.FINAL
+         ├── E15.model
+         ├── E15.weights.FINAL
+         ├── E20.model
+         └── E20.weights.FINAL
+       
+
+1. Get Penn Treebank under data directory. If you just use a parser with pre-trained models, go to step 6.
 
         cd ./data
         ln -s PATH_TO_YOUR_PTB treebank_3
