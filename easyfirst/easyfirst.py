@@ -23,6 +23,7 @@ import os.path
 import cPickle as pickle
 from collections import defaultdict
 from itertools import izip,islice
+from tqdm import tqdm
 from deps import DependenciesCollection
 from ml.ml import MulticlassModel, MultitronParameters 
 from pio import io
@@ -1538,11 +1539,12 @@ def test(attachonly, sents,model,iter="FINAL",quiet=False,ignore_punc=False,labe
       print "micro:",good/(good+bad)
    return good/(good+bad), complete/len(sents)
 
-def parse(attachonly, sents,model,iter="FINAL"):
+def parse(attachonly, sents, model, iter="FINAL"):
    fext = model.featureExtractor()
    m=MulticlassModel(model.weightsFile(iter))
    parser=Parser(attachonly,m,fext,Oracle())
-   for sent in sents:
+   #for sent in sents:
+   for sent in tqdm(sents, mininterval=1, ncols=80):
       deps, sent_new = parser.parse(sent)
       sent = deps.annotate(sent_new)
       for tok in sent:

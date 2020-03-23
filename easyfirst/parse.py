@@ -63,8 +63,8 @@ if "E00" in opts.model_file:
     attachonly = True
 
 if opts.eval:
-   test(test_sents,model,opts.iter,quiet=False,ignore_punc=opts.ignore_punc,labeled=False)
+   test(test_sents, model, opts.iter, quiet=False, ignore_punc=opts.ignore_punc, labeled=False)
 else:
-   parse(attachonly, test_sents,model,opts.iter)
+   parse(attachonly, test_sents, model, opts.iter)
 
 

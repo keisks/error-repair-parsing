@@ -31,6 +31,9 @@ usage="""usage: %prog -o model -f features [options] train_file gold_file [dev_f
 parser = OptionParser(usage)
 parser.add_option("-o","--model",dest="model_file")
 parser.add_option("-f","--features",dest="features_file",default="None")
+parser.add_option("--train_file",dest="train_file")
+parser.add_option("--gold_file",dest="gold_file")
+parser.add_option("--dev_file",dest="dev_file")
 parser.add_option("--iters",dest="iters",action="store",type="int",default=20)
 parser.add_option("--every",dest="save_every",action="store",type="int",default=1)
 parser.add_option("--costoracle",dest="follow_incorrect",action="store_true",default=False)
@@ -39,13 +42,16 @@ parser.add_option("--seed",dest="random_seed",action="store",type="int",default=
 
 opts, args = parser.parse_args()
 
-if len(args)<1 or not (opts.model_file or opts.features_file):
+if len(args)<1 or not (opts.model_file or opts.features_file or opts.train_file or opts.gold_file):
    parser.print_usage()
    sys.exit(1)
 
-TRAIN_FILE = args[0]
-GOLD_FILE  = args[1]
-DEV_FILE   = args[2] if len(args)>2 else None
+#TRAIN_FILE = args[0]
+#GOLD_FILE  = args[1]
+#DEV_FILE   = args[2] if len(args)>2 else None
+TRAIN_FILE = opts.train_file
+GOLD_FILE  = opts.gold_file
+DEV_FILE   = opts.dev_file
 FEATURES   = opts.features_file
 MODEL      = opts.model_file
 

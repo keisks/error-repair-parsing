@@ -2,3 +2,4 @@ numpy
 pdfminer==20140328
 pattern
 kenlm
+tqdm
