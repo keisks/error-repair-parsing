@@ -44,7 +44,7 @@
      
      (You need to install `libmysqlclient-dev` and `libsqlite3-dev` (e.g., `sudo apt-get install libmysqlclient-dev libsqlite3-dev`)
 
-1. Get Penn Treebank under data directory. 
+1. Get Penn Treebank under data directory. (If you only need to use a parser with pre-trained models, go to step 7.)
 
         cd ./data
         ln -s PATH_TO_YOUR_PTB treebank_3
