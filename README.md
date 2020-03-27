@@ -1,6 +1,10 @@
-# Error-repair Dependency Pasring for Ungrammatical Texts (ACL 2017)
+# Error-repair Dependency Pasring for Ungrammatical Texts
 
-[paper](http://cs.jhu.edu/~keisuke/paper/2017_error-repair.pdf)  [bibtex](http://cs.jhu.edu/~keisuke/paper/2017_error-repair.bib) 
+- [paper (pdf)](https://www.aclweb.org/anthology/P17-2030.pdf)
+
+- [bibtex](https://www.aclweb.org/anthology/P17-2030.bib) 
+
+- [ACL anthology](https://www.aclweb.org/anthology/P17-2030/)
 
 - - -
 
