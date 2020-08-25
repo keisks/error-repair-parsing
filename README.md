@@ -49,7 +49,7 @@
    - Download kenlm model to `./data` 
    
          cd ./data
-         wget http://cs.jhu.edu/~keisuke/shared/gigaword.kenlm         
+         wget http://cs.jhu.edu/~keisuke/shared/gigaword.kenlm
          
    - If you use a parser with pre-trained models, [download the model weights](https://drive.google.com/file/d/1LbScsAMBApRTu7C6R7jefbYPiGLolvl9/view?usp=sharing) and put them at `./easyfirst/models/` so that it will look like as follows:
    
