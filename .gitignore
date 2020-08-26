@@ -6,3 +6,5 @@ syntax: glob
 !*.gitkeep
 ./data/*.E00
 ./data/treebank_3
+*.FINAL
+*.kenlm
